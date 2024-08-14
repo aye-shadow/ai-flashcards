@@ -3,7 +3,9 @@ import getStripe from "@/utils/get-stripe";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { AppBar, Button, Container, Toolbar, Typography } from "@mui/material";
 import Head from "next/head";
+
 export default function Home() {
+  return(
     <Container maxWidth ="lg">
       <Head>
         <tittle>Paw Cards</tittle>
@@ -12,15 +14,18 @@ export default function Home() {
 
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6"> Paw Cards </Typography>
+          <Typography variant="h6" style={{flexGrow: 1}}>
+            Paw Cards
+          </Typography>
           <SignedOut>
-            <Button> Login </Button>
-            <Button> Sign up</Button>
+            <Button color="inherit" href="/sign-in">Login</Button>
+            <Button color="inherit" href="/sign-up">Sign Up</Button>
           </SignedOut>
           <SignedIn>
             <UserButton />
           </SignedIn>
         </Toolbar>
-      </AppBar>
+    </AppBar>
     </Container>
+    );
 }
