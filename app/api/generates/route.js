@@ -12,6 +12,8 @@ Review the material or subject matter provided.
 Extract important concepts, terms, definitions, and processes that are essential for understanding the topic.
 Generate Questions:
 
+only generate 10 flashcards:
+
 Create clear and concise questions that test the understanding of each key concept.
 Questions can be in various formats, such as multiple-choice, true/false, fill-in-the-blank, or open-ended.
 Provide Answers:
@@ -54,7 +56,8 @@ export async function POST(req) {
       model: 'gpt-4o',
       response_format: { type: 'json_object' },
     })
-  
+    
+    console.log(completion.choices[0].message.content)
     // Parse the JSON response from the OpenAI API
     const flashcards = JSON.parse(completion.choices[0].message.content)
   
