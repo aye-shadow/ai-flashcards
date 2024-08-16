@@ -4,6 +4,8 @@ import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { AppBar, Box, Button, Container, Toolbar, Typography } from "@mui/material";
 import Head from "next/head";
 
+
+
 export default function Home() {
   return(
       <Container maxWidth ="100vw">
@@ -41,6 +43,14 @@ export default function Home() {
             Learn More
           </Button>
         </Box>
+
+      <Container sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+        <iframe 
+          src="https://lottie.host/embed/86b78ddd-bee7-43ea-98c4-668ebbdbda16/27LOwi3xDl.json"
+          style={{ border: 'none', width: '100%', maxWidth: '500px', height: '500px' }}
+        ></iframe>
+      </Container>
+       
       </Container>
     
     );
