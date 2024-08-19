@@ -16,12 +16,13 @@
     "@mui/material": "^5.16.7",
     "@stripe/stripe-js": "^4.2.0",
     "firebase": "^10.12.5",
+    "groq-sdk": "^0.5.0",
     "lottie-react": "^2.4.0",
     "next": "^14.2.5",
-    "openai": "^4.55.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-lottie": "^1.2.4",
+    "reactjs-flip-card": "^2.0.3",
     "stripe": "^16.7.0"
   },
   "devDependencies": {
