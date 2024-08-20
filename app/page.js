@@ -57,7 +57,7 @@ export default function Home() {
       </AppBar>
 
       <Box sx={{ textAlign: 'center', my: 4 }}>
-        <Typography variant="h2" component="h1" gutterBottom>
+        <Typography variant="h2" component="h1" gutterBottom sx={{ fontFamily: 'impact' }}>
           Welcome to Paw Cards🐶
         </Typography>
         <Typography variant="h5" component="h2" gutterBottom>
