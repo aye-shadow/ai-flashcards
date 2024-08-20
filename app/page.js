@@ -3,46 +3,95 @@ import getStripe from "@/utils/get-stripe";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { AppBar, Box, Button, Container, Toolbar, Typography } from "@mui/material";
 import Head from "next/head";
-
-
+import { PawPrint } from 'lucide-react';
 
 export default function Home() {
-  return(
-      <Container maxWidth ="100vw">
-        <Head>
-          <tittle>Paw Cards</tittle>
-          <meta name ="description"content="Create flashcard from your text" />
-        </Head>
+  return (
+    <Container maxWidth="100vw" sx={{ backgroundColor: '#FF9913', minHeight: '100vh', padding: 0 }}>
+      <Head>
+        <title>Paw Cards</title>
+        <meta name="description" content="Create flashcard from your text" />
+      </Head>
 
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h6" style={{flexGrow: 1}}>
+      <AppBar position="static" sx={{ backgroundColor: '#D16002' }}>
+        <Toolbar>
+          <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
+            <PawPrint style={{ marginRight: 8 }} />
+            <Typography variant="h6" sx={{ fontFamily: 'impact' }}>
               Paw Cards
             </Typography>
-            <SignedOut>
-              <Button color="inherit" href="/sign-in">Login</Button>
-              <Button color="inherit" href="/sign-up">Sign Up</Button>
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </Toolbar>
-        </AppBar>
+          </Box>
+          <SignedOut>
+            <Button
+              color="inherit"
+              href="/sign-in"
+              sx={{
+                backgroundColor: '#FF8C00', // Dark orange
+                '&:hover': {
+                  backgroundColor: '#E67E22' // Slightly lighter dark orange on hover
+                },
+                color: '#FFFFFF', // White text
+                mr: 2 // Margin right for spacing between buttons
+              }}
+            >
+              Login
+            </Button>
+            <Button
+              color="inherit"
+              href="/sign-up"
+              sx={{
+                backgroundColor: '#FF8C00', // Dark orange
+                '&:hover': {
+                  backgroundColor: '#E67E22' // Slightly lighter dark orange on hover
+                },
+                color: '#FFFFFF' // White text
+              }}
+            >
+              Sign Up
+            </Button>
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </Toolbar>
+      </AppBar>
 
-        <Box sx={{textAlign: 'center', my: 4}}>
-          <Typography variant="h2" component="h1" gutterBottom>
-            Welcome to Paw Cards🐶
-          </Typography>
-          <Typography variant="h5" component="h2" gutterBottom>
-            The easiest way to create flashcards from your text.
-          </Typography>
-          <Button variant="contained" color="primary" sx={{mt: 2, mr: 2}} href="/generate">
-            Get Started
-          </Button>
-          <Button variant="outlined" color="primary" sx={{mt: 2}}>
-            Learn More
-          </Button>
-        </Box>
+      <Box sx={{ textAlign: 'center', my: 4 }}>
+        <Typography variant="h2" component="h1" gutterBottom>
+          Welcome to Paw Cards🐶
+        </Typography>
+        <Typography variant="h5" component="h2" gutterBottom>
+          The easiest way to create flashcards from your text.
+        </Typography>
+        <Button
+          color="inherit"
+          href="/generate"
+          sx={{
+            backgroundColor: '#B06500', // Dark orange
+            '&:hover': {
+              backgroundColor: '#E67E22' // Slightly lighter dark orange on hover
+            },
+            color: '#FFFFFF', // White text
+            mr: 2 // Margin right for spacing between buttons
+          }}
+        >
+          Get Started
+        </Button>
+        <Button
+          variant="outlined"
+          sx={{
+            color: '#B06500', // Dark orange text
+            borderColor: '#B06500', // Dark orange border
+            '&:hover': {
+              color: '#FFFFFF', // White text on hover
+              borderColor: '#E67E22', // Slightly lighter dark orange border on hover
+              backgroundColor: '#FF8C00' // Dark orange background on hover
+            }
+          }}
+        >
+          Learn More
+        </Button>
+      </Box>
 
       <Container sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
         <iframe 
@@ -50,8 +99,6 @@ export default function Home() {
           style={{ border: 'none', width: '100%', maxWidth: '500px', height: '500px' }}
         ></iframe>
       </Container>
-       
-      </Container>
-    
-    );
+    </Container>
+  );
 }
