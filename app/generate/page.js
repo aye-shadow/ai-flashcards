@@ -9,9 +9,6 @@ import {
   Typography,
   Box,
   Grid,
-  Card,
-  CardContent,
-  CardActionArea,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -21,12 +18,9 @@ import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import {
   collection,
-  writeBatch,
   doc,
   getDoc,
-  getDocs,
   setDoc,
-  addDoc,
 } from "firebase/firestore";
 import { db } from "@/firebase"; // Adjust the import based on your file structure
 import ReactFlipCard from "reactjs-flip-card";
