@@ -94,93 +94,106 @@ export default function Generate() {
   };
 
   return (
-    <Container maxWidth="md">
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Generate Flashcards
-        </Typography>
-        <TextField
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          label="Enter text"
-          fullWidth
-          multiline
-          rows={4}
-          variant="outlined"
-          sx={{ mb: 2 }}
-        />
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleSubmit}
-          fullWidth
-        >
-          Generate Flashcards
-        </Button>
-      </Box>
-      {flashcards.length > 0 && (
-        <Box
-          sx={{
-            mt: 4,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h5" component="h2" gutterBottom>
-            Generated Flashcards
+    <Box sx={{ backgroundColor: "#FF9913", minHeight: "100vh", display:"flex", 
+      flexDirection: "column",
+        padding: "20px"
+     }}>
+      <Container maxWidth="md">
+        <Box sx={{ my: 4 }}>
+          <Typography variant="h4" component="h1" gutterBottom>
+            Generate  Pawcards
           </Typography>
-          <Grid container spacing={2}>
-            {flashcards.map((flashcard, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
-                <ReactFlipCard
-                  containerStyle={{
-                    width: "100%",
-                    height: "200px",
-                    position: "relative",
-                  }}
-                  flipTrigger={"onClick"}
-                  frontComponent={<FlipCard>{flashcard.front}</FlipCard>}
-                  backComponent={<FlipCard>{flashcard.back}</FlipCard>}
-                />
-              </Grid>
-            ))}
-          </Grid>
-          <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={handleOpenDialog}
-            >
+          <TextField
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            label="Enter text"
+            fullWidth
+            multiline
+            rows={4}
+            variant="outlined"
+            sx={{ mb: 2 }}
+          />
+          <Button
+          color="inherit"
+          href="/generate"
+          sx={{
+            backgroundColor: '#B06500', // Dark orange
+            '&:hover': {
+              backgroundColor: '#E67E22' // Slightly lighter dark orange on hover
+            },
+            color: '#FFFFFF'
+          }}
+          >
+            Generate Flashcards
+          </Button>
+        </Box>
+        {flashcards.length > 0 && (
+          <Box
+            sx={{
+              mt: 4,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Typography variant="h5" component="h2" gutterBottom
+            sx={{fontFamily: '"impact", "Arial Black", sans-serif',
+              color: '#fff', // White text
+              textAlign: 'center'}}>
+              Generated Pawcards
+            </Typography>
+            <Grid container spacing={2}>
+              {flashcards.map((flashcard, index) => (
+                <Grid item xs={12} sm={6} md={4} key={index}>
+                  <ReactFlipCard
+                    containerStyle={{
+                      width: "100%",
+                      height: "200px",
+                      position: "relative",
+                    }}
+                    flipTrigger={"onClick"}
+                    frontComponent={<FlipCard>{flashcard.front}</FlipCard>}
+                    backComponent={<FlipCard>{flashcard.back}</FlipCard>}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+            <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={handleOpenDialog}
+              >
+                Save
+              </Button>
+            </Box>
+          </Box>
+        )}
+        <Dialog open={dialogOpen} onClose={handleCloseDialog}>
+          <DialogTitle>Save Pawcards</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Please enter a name for your flashcards collection.
+            </DialogContentText>
+            <TextField
+              autoFocus
+              margin="dense"
+              label="Collection Name"
+              type="text"
+              fullWidth
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              variant="outlined"
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseDialog}>Cancel</Button>
+            <Button onClick={saveFlashcards} color="primary">
               Save
             </Button>
-          </Box>
-        </Box>
-      )}
-      <Dialog open={dialogOpen} onClose={handleCloseDialog}>
-        <DialogTitle>Save Flashcards</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Please enter a name for your flashcards collection.
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            label="Collection Name"
-            type="text"
-            fullWidth
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            variant="outlined"
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCloseDialog}>Cancel</Button>
-          <Button onClick={saveFlashcards} color="primary">
-            Save
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </Container>
+          </DialogActions>
+        </Dialog>
+      </Container>
+    </Box>
   );
 }
