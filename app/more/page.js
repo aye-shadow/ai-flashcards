@@ -1,10 +1,23 @@
-import * as React from 'react'
-import { Container, Typography, Box, Card, CardContent, List, ListItem, ListItemText } from '@mui/material'
+'use client';
+
+import * as React from 'react';
+import { Container, Typography, Box, Card, CardContent, List, ListItem, ListItemText, Button } from '@mui/material';
+import Link from 'next/link';
 
 export default function LearnMore() {
   return (
     <Container maxWidth="md">
       <Box sx={{ my: 4 }}>
+        {/* Support Us Button */}
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 4 }}>
+          <Link href="/support-us" passHref>
+            <Button variant="contained" color="secondary">
+              Support Us
+            </Button>
+          </Link>
+        </Box>
+    
+      
         <Typography variant="h3" component="h1" gutterBottom>
           Learn More About Flashcard Generation
         </Typography>
