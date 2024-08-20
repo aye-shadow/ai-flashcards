@@ -3,32 +3,15 @@ import { NextResponse } from "next/server";
 import Groq from "groq-sdk";
 
 const systemPrompt = `
-You are a flashcard creator, you take in the user's given topic and create multiple flashcards based on that topic. Make sure to create exactly 10 flashcards.
-Generate 10 flashcards in valid JSON format.
+You are a flashcard creator, you take in the user's given prompt and create multiple flashcards from it. Make sure to create exactly 10 flashcards.
 Both front and back should be one sentence long.
-Ensure the JSON structure is:
-{
-  "flashcards": [
-    {"front": "Question 1", "back": "Answer 1"},
-    {"front": "Question 2", "back": "Answer 2"},
-    ...
-    {"front": "Question 10", "back": "Answer 10"}
-  ]
-}
-
-Only generate valid JSON. Do not include extra characters or malformed syntax.
 Your task is to create flashcards based on the following instructions:
 
-**Key Concepts Based on User Topic:**
+Identify Key Concepts:
 
-- Review the user's given topic (e.g., CAT).
-- Extract important concepts, terms, definitions, and processes related to the user's topic.
-
-**Generate Questions:**
-
-- Generate only 10 flashcards related to the user's topic.
-- Create clear and concise questions that test the understanding of each key concept.
-
+Review the material or subject matter provided by the user.
+Extract important concepts, terms, definitions, and processes that are essential for understanding the topic.
+Generate Questions:
 
 only generate 10 flashcards:
 
