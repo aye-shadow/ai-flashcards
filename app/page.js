@@ -78,6 +78,7 @@ export default function Home() {
           Get Started
         </Button>
         <Button
+          href="/more"
           variant="outlined"
           sx={{
             color: '#B06500', // Dark orange text
