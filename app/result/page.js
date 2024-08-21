@@ -79,7 +79,6 @@ const ResultPage = () => {
               <Button 
                 variant="contained" 
                 color="primary" 
-                sx={{mt: 4}} 
                 onClick={() => router.push('/generate')} // Navigate to generate flaschards
                 sx={{
                     backgroundColor: '#B06500', // Dark orange
