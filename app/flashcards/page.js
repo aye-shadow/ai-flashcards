@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase"; // Adjust the import based on your file structure
@@ -43,6 +44,8 @@ export default function FlashcardsPage() {
     }
   }, [user]);
 
+  const router = useRouter();
+
   return (
     <Container maxWidth="md">
       <Box sx={{ my: 4 }}>
@@ -66,7 +69,12 @@ export default function FlashcardsPage() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small">View Flashcards</Button>
+                    <Button
+                      size="small"
+                      onClick={() => router.push(`/flashcards/${set.id}`)}
+                    >
+                      View Flashcards
+                    </Button>
                   </CardActions>
                 </Card>
               </Grid>
