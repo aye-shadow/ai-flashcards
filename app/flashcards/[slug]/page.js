@@ -7,11 +7,19 @@ import ReactFlipCard from "reactjs-flip-card";
 import FlipCard from "@/components/flipcard";
 import { useUser } from "@clerk/nextjs";
 
+function cleanSlug(slug) {
+  // Decode the slug to replace '%20' with ' '
+  const cleanedSlug = decodeURIComponent(slug);
+  // Tag the cleaned slug
+  const taggedSlug = `${cleanedSlug}`;
+  return taggedSlug;
+}
+
 export default function FlashcardSetPage({ params }) {
   const [flashcards, setFlashcards] = useState([]);
   const [noFlashcardsFound, setNoFlashcardsFound] = useState(false);
   const [loading, setLoading] = useState(true); // Start in loading state
-  const slug = params.slug; // Get the flashcardSetId from the URL
+  const slug = cleanSlug(params.slug); // Get the flashcardSetId from the URL
   const { user } = useUser();
 
   useEffect(() => {
