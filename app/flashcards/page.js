@@ -13,14 +13,21 @@ import {
   CardContent,
   CardActions,
   Button,
+  Skeleton
 } from "@mui/material";
 
 export default function FlashcardsPage() {
   const [flashcardSets, setFlashcardSets] = useState([]);
+  const [loading, setLoading] = useState(true); // Loading state
   const { user } = useUser();
+  const router = useRouter();
 
   useEffect(() => {
     const fetchFlashcardSets = async () => {
+      if (!user) {
+        setLoading(false); // Ensure loading is set to false if user is not available
+        return;
+      }
       try {
         const flashcardSetsCollectionRef = collection(
           db,
@@ -36,15 +43,13 @@ export default function FlashcardsPage() {
         setFlashcardSets(flashcardSetsData);
       } catch (error) {
         console.error("Error fetching flashcard sets:", error);
+      } finally {
+        setLoading(false); // End loading after fetch operation
       }
     };
 
-    if (user) {
-      fetchFlashcardSets();
-    }
+    fetchFlashcardSets();
   }, [user]);
-
-  const router = useRouter();
 
   return (
     <Container maxWidth="md">
@@ -52,7 +57,17 @@ export default function FlashcardsPage() {
         <Typography variant="h4" component="h1" gutterBottom>
           Your Flashcard Sets
         </Typography>
-        {flashcardSets.length > 0 ? (
+        {loading ? (
+          <Grid container spacing={3}>
+            {[...Array(6)].map((_, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <Skeleton variant="rectangular" width="100%" height={140} />
+                <Skeleton variant="text" />
+                <Skeleton variant="text" />
+              </Grid>
+            ))}
+          </Grid>
+        ) : flashcardSets.length > 0 ? (
           <Grid container spacing={3}>
             {flashcardSets.map((set) => (
               <Grid item xs={12} sm={6} md={4} key={set.id}>

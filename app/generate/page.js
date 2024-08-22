@@ -50,7 +50,7 @@ export default function Generate() {
       }
       const data = await response.json();
       setFlashcards(data);
-      console.log(flashcards);
+      // console.log(flashcards);
     } catch (error) {
       console.error("Error generating flashcards:", error);
       alert("An error occurred while generating flashcards. Please try again.");
@@ -133,8 +133,8 @@ export default function Generate() {
   };
 
   const saveFlashcards = async () => {
-    console.log(user.id);
-    console.log(user.emailAddresses[0].emailAddress);
+    // console.log(user.id);
+    // console.log(user.emailAddresses[0].emailAddress);
 
     const docRef = doc(db, "flashcards", user.id);
 

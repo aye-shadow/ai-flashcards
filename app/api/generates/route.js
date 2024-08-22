@@ -52,7 +52,7 @@ export async function POST(req) {
     response_format: { type: "json_object" },
   });
 
-  console.log(completion.choices[0].message.content);
+  // console.log(completion.choices[0].message.content);
   // Parse the JSON response from the OpenAI API
   const flashcards = JSON.parse(completion.choices[0].message.content);
 
