@@ -17,15 +17,17 @@ import {
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
-import { db } from "@/firebase"; // Adjust the import based on your file structure
 import ReactFlipCard from "reactjs-flip-card";
 import FlipCard from "@/components/flipcard";
+import { db } from "@/firebase"; // Adjust the import based on your file structure
+import { CircularProgress } from '@mui/material';
 
 export default function Generate() {
   const [text, setText] = useState("");
   const [dialogOpen, setDialogOpen] = useState(false);
   const [name, setName] = useState("");
   const [flashcards, setFlashcards] = useState([]);
+  const [isLoading, setIsLoading] = useState(false); // Add loading state
   const router = useRouter();
   const { user } = useUser();
 
@@ -37,17 +39,15 @@ export default function Generate() {
       alert("Please enter some text to generate flashcards.");
       return;
     }
-
+    setIsLoading(true); // Start loading
     try {
       const response = await fetch("/api/generates", {
         method: "POST",
         body: text,
       });
-
       if (!response.ok) {
         throw new Error(`API request failed with status ${response.status}`);
       }
-
       const data = await response.json();
       setFlashcards(data);
       console.log(flashcards);
@@ -55,6 +55,7 @@ export default function Generate() {
       console.error("Error generating flashcards:", error);
       alert("An error occurred while generating flashcards. Please try again.");
     }
+    setIsLoading(false); // End loading
   };
 
   const userCheck = async () => {
@@ -185,12 +186,13 @@ export default function Generate() {
             color="primary"
             onClick={handleSubmit}
             fullWidth
+            disabled={isLoading} // Disable button when loading
             sx={{
-              backgroundColor: "#CC5500",
-              "&:hover": { backgroundColor: "#FF6E00" },
+              backgroundColor: isLoading ? "#AAA" : "#CC5500", // Change color when loading
+              "&:hover": { backgroundColor: isLoading ? "#AAA" : "#FF6E00" },
             }}
           >
-            Generate Pawcards
+            {isLoading ? <CircularProgress size={24} /> : "Generate Pawcards"}
           </Button>
         </Box>
         {flashcards.length > 0 && (
