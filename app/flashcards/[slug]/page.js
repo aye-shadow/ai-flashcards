@@ -56,8 +56,18 @@ export default function FlashcardSetPage({ params }) {
   }, [slug, user]);
 
   return (
-    <Container maxWidth="md">
-      <Box sx={{ my: 4 }}>
+    <Box
+      sx={{
+        backgroundColor: "#FF9913", // Orange background color
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "20px",
+      }}
+    >
+      <Container maxWidth="md">
         <Typography variant="h4" component="h1" gutterBottom>
           {slug}
         </Typography>
@@ -95,7 +105,7 @@ export default function FlashcardSetPage({ params }) {
             ))}
           </Grid>
         )}
-      </Box>
-    </Container>
+      </Container>
+    </Box>
   );
 }
