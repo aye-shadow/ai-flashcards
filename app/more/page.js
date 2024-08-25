@@ -11,9 +11,9 @@ export default function LearnMore() {
         <Box sx={{ my: 4 }}>
           {/* Support Us Button */}
           <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 4 }}>
-            <Link href="/support-us" passHref>
+            <Link href="/generate" passHref>
               <Button variant="contained" color="secondary" sx={{ backgroundColor: '#CC5500', '&:hover': { backgroundColor: '#FF6E00' } }}>
-                Support Us
+                Get Started
               </Button>
             </Link>
           </Box>
