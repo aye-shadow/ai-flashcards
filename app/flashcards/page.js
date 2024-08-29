@@ -13,7 +13,7 @@ import {
   CardContent,
   CardActions,
   Button,
-  Skeleton
+  Skeleton,
 } from "@mui/material";
 
 export default function FlashcardsPage() {
@@ -70,11 +70,16 @@ export default function FlashcardsPage() {
             position: "relative",
             border: "10px solid #71363A",
             borderRadius: "8px",
-            backgroundColor: '#E89149',
+            backgroundColor: "#E89149",
             padding: "16px",
           }}
         >
-          <Typography variant="h4" component="h1" sx={{ fontFamily: "impact" }} gutterBottom>
+          <Typography
+            variant="h4"
+            component="h1"
+            sx={{ fontFamily: "impact" }}
+            gutterBottom
+          >
             Your Pawcard Sets
           </Typography>
           {loading ? (
@@ -91,7 +96,13 @@ export default function FlashcardsPage() {
             <Grid container spacing={3}>
               {flashcardSets.map((set) => (
                 <Grid item xs={12} sm={6} md={4} key={set.id}>
-                  <Card sx={{ border: "8px solid #8A3324", borderRadius: "8px", height: "100%" }}>
+                  <Card
+                    sx={{
+                      border: "8px solid #8A3324",
+                      borderRadius: "8px",
+                      height: "100%",
+                    }}
+                  >
                     <CardContent>
                       <Typography variant="h6" component="div">
                         {set.id}
@@ -107,13 +118,13 @@ export default function FlashcardsPage() {
                       <Button
                         size="small"
                         sx={{
-                          color: '#B06500', // Dark orange text
-                          borderColor: '#B06500', // Dark orange border
-                          '&:hover': {
-                            color: '#FFFFFF', // White text on hover
-                            borderColor: '#E67E22', // Slightly lighter dark orange border on hover
-                            backgroundColor: '#FF8C00' // Dark orange background on hover
-                          }
+                          color: "#B06500", // Dark orange text
+                          borderColor: "#B06500", // Dark orange border
+                          "&:hover": {
+                            color: "#FFFFFF", // White text on hover
+                            borderColor: "#E67E22", // Slightly lighter dark orange border on hover
+                            backgroundColor: "#FF8C00", // Dark orange background on hover
+                          },
                         }}
                         onClick={() => router.push(`/flashcards/${set.id}`)}
                       >
@@ -127,12 +138,23 @@ export default function FlashcardsPage() {
           ) : (
             <>
               <Typography variant="body1">
-                You don't have any pawcard sets yet.
+                You don&apos;t have any pawcard sets yet.
               </Typography>
-              <Container sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+              <Container
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: "20px",
+                }}
+              >
                 <iframe
                   src="https://lottie.host/embed/d2cf3a3d-afec-4371-b5fc-646a9cb9a0e0/Wjcw5Ixi8Y.json"
-                  style={{ border: 'none', width: '100%', maxWidth: '500px', height: '500px' }}
+                  style={{
+                    border: "none",
+                    width: "100%",
+                    maxWidth: "500px",
+                    height: "500px",
+                  }}
                 ></iframe>
               </Container>
             </>

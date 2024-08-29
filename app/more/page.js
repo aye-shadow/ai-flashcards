@@ -23,7 +23,7 @@ export default function LearnMore() {
           </Typography>
 
           <Typography variant="body1" sx={{ mb: 4 }}>
-            Flashcards are a powerful tool for studying and retaining information. By using our flashcard generation feature, you can quickly create custom flashcards tailored to your study needs. Whether you're preparing for exams, learning a new language, or just trying to memorize key concepts, flashcards can help you review and reinforce information effectively.
+            Flashcards are a powerful tool for studying and retaining information. By using our flashcard generation feature, you can quickly create custom flashcards tailored to your study needs. Whether you&apos;re preparing for exams, learning a new language, or just trying to memorize key concepts, flashcards can help you review and reinforce information effectively.
           </Typography>
 
           <Card sx={{ mb: 4, border: '8px solid #CC5500' }}> {/* Border color added */}
