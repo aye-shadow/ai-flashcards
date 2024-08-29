@@ -1,6 +1,6 @@
 import { Card, CardActionArea, CardContent, Typography } from "@mui/material";
 import React from "react";
-import styles from "./css/flipCard.module.css"; // Import the CSS module
+import styles from "./css/FlipCard.module.css"; // Import the CSS module
 
 const FlipCard = ({ children }) => {
   return (
